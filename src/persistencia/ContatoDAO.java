@@ -14,11 +14,11 @@ import java.util.ArrayList;
 
 
 public class ContatoDAO implements CRUD{
-    String arquivoTelefone = "C:\\Users\\aluno\\Documents\\NetBeansProjects\\SistemaAgenda\\src\\arquivo\\Telefone.csv";
-    String arquivoContato = "C:\\Users\\aluno\\Documents\\NetBeansProjects\\SistemaAgenda\\src\\arquivo\\Contato.csv";
-    String arquivoEmail = "C:\\Users\\aluno\\Documents\\NetBeansProjects\\SistemaAgenda\\src\\arquivo\\Email.csv";
-    String arquivoEndereco = "C:\\Users\\aluno\\Documents\\NetBeansProjects\\SistemaAgenda\\src\\arquivo\\Endereco.csv";
-    String arquivoCategoria = "C:\\Users\\aluno\\Documents\\NetBeansProjects\\SistemaAgenda\\src\\arquivo\\Categoria.csv";
+    String arquivoTelefone = "C:\\Users\\Pedro\\Documents\\NetBeansProjects\\sistemadeagenda-master\\sistemadeagenda\\src\\arquivo\\Telefone.csv";
+    String arquivoContato = "C:\\Users\\Pedro\\Documents\\NetBeansProjects\\sistemadeagenda-master\\sistemadeagenda\\src\\arquivo\\Contato.csv";
+    String arquivoEmail = "C:\\Users\\Pedro\\Documents\\NetBeansProjects\\sistemadeagenda-master\\sistemadeagenda\\src\\arquivo\\Email.csv";
+    String arquivoEndereco = "C:\\Users\\Pedro\\Documents\\NetBeansProjects\\sistemadeagenda-master\\sistemadeagenda\\src\\arquivo\\Endereco.csv";
+    String arquivoCategoria = "C:\\Users\\Pedro\\Documents\\NetBeansProjects\\sistemadeagenda-master\\sistemadeagenda\\src\\arquivo\\Categoria.csv";
     
     
     
@@ -119,11 +119,11 @@ public class ContatoDAO implements CRUD{
     }
 
     @Override
-    public ArrayList<String> recuperar() throws Exception {
+    public ArrayList<Contato> recuperar() throws Exception {
     try {
             ArrayList<Contato> listaDeContatos = new ArrayList<Contato>();
-            ArrayList<Telefone> listaDeTelefones = new ArrayList<Telefone>();
-            ArrayList<String> listaGeral = new ArrayList<>();
+//            ArrayList<Telefone> listaDeTelefones = new ArrayList<Telefone>();
+//            ArrayList<String> listaGeral = new ArrayList<>();
             Contato objetoContato = null;
             Telefone objTelefone = null;
             
@@ -137,30 +137,30 @@ public class ContatoDAO implements CRUD{
     
     
     while((linha=br.readLine())!= null){
-        String vector[] = linha.split(";");
+        String vector[] = linha.split(",");
         objetoContato = new Contato();
         objetoContato.setId(Integer.parseInt(vector[0]));
         objetoContato.setNome(vector[1]);
-       listaGeral.add(String.valueOf(objetoContato));
+       listaDeContatos.add(objetoContato);
     }
     br.close();
     
-   String linha2= "";
-        while((linha2=br.readLine())!= null){
-        String vector2[] = linha2.split(";");
-        objTelefone = new Telefone();
-        
-        objTelefone.setIdContato(Integer.parseInt(vector2[0]));
-        objTelefone.setDdi(Integer.parseInt(vector2[1]));
-        objTelefone.setDdd(Integer.parseInt(vector2[2]));
-        objTelefone.setNumero(Integer.parseInt(vector2[3]));
+//   String linha2= "";
+//        while((linha2=br.readLine())!= null){
+//        String vector2[] = linha2.split(";");
+//        objTelefone = new Telefone();
+//        
+//        objTelefone.setIdContato(Integer.parseInt(vector2[0]));
+//        objTelefone.setDdi(Integer.parseInt(vector2[1]));
+//        objTelefone.setDdd(Integer.parseInt(vector2[2]));
+//        objTelefone.setNumero(Integer.parseInt(vector2[3]));
         
     //    String numero = "+"+objTelefone.getDdi()+"("+objTelefone.getDdd()+")"+objTelefone.getNumero();
-        if((objTelefone.getIdContato()) == (objetoContato.getId())){
-        listaGeral.add(String.valueOf(objTelefone));
-        }
-    }
-        return listaGeral;
+//        if((objTelefone.getIdContato()) == (objetoContato.getId())){
+//        listaGeral.add(String.valueOf(objTelefone));
+//        }
+//    }
+        return listaDeContatos;
         } catch (Exception erro) {
             throw erro;
         }
