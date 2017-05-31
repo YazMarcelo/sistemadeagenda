@@ -8,6 +8,11 @@ public class Telefone {
     //enum tipo
     
     public Telefone(){};
+    public Telefone(int ddi, int ddd, int numero){
+        this.ddi = ddi;
+        this.ddd = ddd;
+        this.numero = numero;
+    }
     public Telefone(int idContato, int ddi, int ddd, int numero){
         this.idContato = idContato;
         this.ddi = ddi;

@@ -164,8 +164,6 @@ public class ContatoDAO implements CRUD{
         } catch (Exception erro) {
             throw erro;
         }
-    }
-
-           
+    }           
     
 }
