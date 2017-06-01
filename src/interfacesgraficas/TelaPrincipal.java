@@ -23,31 +23,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
-        try {
-            ArrayList<String> listaDeGeral;
-            ArrayList<Contato> listaDeContatos = null;
-            ArrayList<Telefone> listaDeTelefones = null;
-                    
-            ContatoDAO agenda = new ContatoDAO();
-            listaDeContatos = agenda.recuperar();
-            DefaultTableModel model = (DefaultTableModel) jTableListagem.getModel();
-            
-            model.setNumRows(0);
-            for(int pos=0; pos<listaDeContatos.size();pos++){
-                String[] saida = new String[5];
-                Contato aux = listaDeContatos.get(pos);
-//                Telefone aux1 = listaDeTelefones.get(pos);
-                
-                saida[0] = String.valueOf(aux.getId());
-                saida[1] = aux.getNome();
-                //saida[2] = "+"+String.valueOf(aux1.getDdi())+"("+String.valueOf(aux1.getDdd())+")"+String.valueOf(aux1.getNumero());
-                model.addRow(saida);
-            }
-            
-            
-        } catch (Exception erro) {
-            JOptionPane.showMessageDialog(this, erro.getMessage());
-        }
+        
         
     }
 
@@ -166,7 +142,31 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+try {
+            ArrayList<String> listaDeGeral;
+            ArrayList<Contato> listaDeContatos = null;
+            //ArrayList<Telefone> listaDeTelefones = null;
+                    
+            ContatoDAO agenda = new ContatoDAO();
+            listaDeGeral = agenda.recuperar();
+            DefaultTableModel model = (DefaultTableModel) jTableListagem.getModel();
+            
+            model.setNumRows(0);
+            for(int pos=0; pos<listaDeGeral.size();pos++){
+                String[] saida = new String[5];
+                Contato aux = listaDeContatos.get(pos);
+                //Telefone aux1 = listaDeTelefones.get(pos);
+                
+                saida[0] = String.valueOf(aux.getId());
+                saida[1] = aux.getNome();
+                //saida[2] = "+"+String.valueOf(aux1.getDdi())+"("+String.valueOf(aux1.getDdd())+")"+String.valueOf(aux1.getNumero());
+                model.addRow(saida);
+            }
+            
+            
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, erro.getMessage());
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

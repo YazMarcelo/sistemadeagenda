@@ -119,11 +119,11 @@ public class ContatoDAO implements CRUD{
     }
 
     @Override
-    public ArrayList<Contato> recuperar() throws Exception {
+    public ArrayList<String> recuperar() throws Exception {
     try {
             ArrayList<Contato> listaDeContatos = new ArrayList<Contato>();
-//            ArrayList<Telefone> listaDeTelefones = new ArrayList<Telefone>();
-//            ArrayList<String> listaGeral = new ArrayList<>();
+            ArrayList<Telefone> listaDeTelefones = new ArrayList<Telefone>();
+            ArrayList<String> listaGeral = new ArrayList<>();
             Contato objetoContato = null;
             Telefone objTelefone = null;
             
@@ -141,26 +141,27 @@ public class ContatoDAO implements CRUD{
         objetoContato = new Contato();
         objetoContato.setId(Integer.parseInt(vector[0]));
         objetoContato.setNome(vector[1]);
-       listaDeContatos.add(objetoContato);
+       listaGeral.add(String.valueOf(objetoContato));
     }
     br.close();
-    
+//    
 //   String linha2= "";
 //        while((linha2=br.readLine())!= null){
-//        String vector2[] = linha2.split(";");
+//        String vector2[] = linha2.split(",");
 //        objTelefone = new Telefone();
 //        
 //        objTelefone.setIdContato(Integer.parseInt(vector2[0]));
 //        objTelefone.setDdi(Integer.parseInt(vector2[1]));
 //        objTelefone.setDdd(Integer.parseInt(vector2[2]));
 //        objTelefone.setNumero(Integer.parseInt(vector2[3]));
-        
-    //    String numero = "+"+objTelefone.getDdi()+"("+objTelefone.getDdd()+")"+objTelefone.getNumero();
+//        
+//    String numero = "+"+objTelefone.getDdi()+"("+objTelefone.getDdd()+")"+objTelefone.getNumero();
 //        if((objTelefone.getIdContato()) == (objetoContato.getId())){
-//        listaGeral.add(String.valueOf(objTelefone));
+//        listaGeral.add(numero);
 //        }
 //    }
-        return listaDeContatos;
+//      brTelefone.close();
+        return listaGeral;
         } catch (Exception erro) {
             throw erro;
         }
